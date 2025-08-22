@@ -1,0 +1,74 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!--  滚动条通用样式  -->
+    <Style TargetType="ScrollBar" x:Key="ModernScrollBar">
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Width" Value="12" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ScrollBar">
+                    <Grid>
+                        <Border
+                            CornerRadius="4"
+                            Opacity="0"
+                            Width="12"
+                            x:Name="Bg" />
+                        <Track
+                            Focusable="False"
+                            IsDirectionReversed="True"
+                            x:Name="PART_Track">
+                            <Track.Thumb>
+                                <Thumb
+                                    Background="#FFF"
+                                    Cursor="Hand"
+                                    Opacity="0.15"
+                                    Width="6"
+                                    x:Name="Thumb">
+                                    <Thumb.Template>
+                                        <ControlTemplate TargetType="Thumb">
+                                            <Border Background="{TemplateBinding Background}" CornerRadius="4" />
+                                        </ControlTemplate>
+                                    </Thumb.Template>
+                                </Thumb>
+                            </Track.Thumb>
+                        </Track>
+                    </Grid>
+
+                    <!--  悬浮淡入  -->
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Opacity" TargetName="Thumb" Value="0.6" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--  只给 TextBox 里的 ScrollViewer 使用  -->
+    <Style
+        BasedOn="{StaticResource {x:Type TextBox}}"
+        TargetType="TextBox"
+        x:Key="ModernTextBox">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TextBox">
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="6">
+                        <ScrollViewer
+                            HorizontalScrollBarVisibility="Disabled"
+                            VerticalScrollBarVisibility="Auto"
+                            x:Name="PART_ContentHost">
+                            <ScrollViewer.Resources>
+                                <!--  把滚动条样式挂进去  -->
+                                <Style BasedOn="{StaticResource ModernScrollBar}" TargetType="ScrollBar" />
+                            </ScrollViewer.Resources>
+                        </ScrollViewer>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

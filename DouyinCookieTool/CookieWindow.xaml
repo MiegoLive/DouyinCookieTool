@@ -1,0 +1,35 @@
+﻿<Window
+    Background="#202020"
+    Height="400"
+    Title="Cookie 已复制到剪贴板（可再次手动复制）"
+    Width="600"
+    WindowStartupLocation="CenterOwner"
+    mc:Ignorable="d"
+    x:Class="DouyinCookieTool.CookieWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:DouyinCookieTool"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ModernScroll.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <TextBox
+        AcceptsReturn="True"
+        Background="#202020"
+        BorderThickness="0"
+        FontFamily="Consolas"
+        FontSize="12"
+        Foreground="#FFF"
+        IsReadOnly="True"
+        Margin="4"
+        Padding="4"
+        Style="{StaticResource ModernTextBox}"
+        TextWrapping="Wrap"
+        VerticalScrollBarVisibility="Auto"
+        x:Name="tbCookie" />
+</Window>

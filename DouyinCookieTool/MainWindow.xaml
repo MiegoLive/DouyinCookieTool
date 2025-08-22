@@ -1,0 +1,68 @@
+﻿<Window
+    Background="#202020"
+    Height="900"
+    Title="糕社抖音Cookie获取工具"
+    Width="1600"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d"
+    x:Class="DouyinCookieTool.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:DouyinCookieTool"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:wv2="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <DockPanel>
+        <StackPanel DockPanel.Dock="Top">
+            <TextBlock
+                FontSize="14"
+                Foreground="#FFF"
+                Margin="8"
+                TextWrapping="Wrap">
+                1. 点击下方“获取 Cookie”前，请先在网页中完成登录；<LineBreak />
+                2. 登录完成后，再点按钮即可弹出 Cookie 文本框，直接复制使用。</TextBlock>
+            <Border ClipToBounds="True" CornerRadius="8">
+                <Button
+                    Click="GetCookie_Click"
+                    Content="获取 Cookie"
+                    Margin="8">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Foreground" Value="#000" />
+                            <Setter Property="Background" Value="#FFCE4C" />
+                            <!--  主题色  -->
+                            <Setter Property="BorderBrush" Value="#FFCE4C" />
+                            <Setter Property="BorderThickness" Value="0" />
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border
+                                            Background="{TemplateBinding Background}"
+                                            CornerRadius="4"
+                                            Padding="8"
+                                            SnapsToDevicePixels="True">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <!--  鼠标悬停变浅  -->
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Background" Value="#E9BD48" />
+                                            </Trigger>
+                                            <!--  按下再变浅  -->
+                                            <Trigger Property="IsPressed" Value="True">
+                                                <Setter Property="Background" Value="#D4AD45" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Style>
+                </Button>
+            </Border>
+        </StackPanel>
+        <Border ClipToBounds="True" CornerRadius="8">
+            <wv2:WebView2 Name="webView" />
+        </Border>
+    </DockPanel>
+</Window>
